@@ -2,16 +2,36 @@
 <div class="off-canvas-wrapper">
 	<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 		<div class="off-canvas position-left reveal-for-medium" id="offCanvas" data-off-canvas>
-			<a href="/" class="logo"><img src="/assets/img/logo.png" /></a>
+			<a href="/" class="logo"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" /></a>
 			<ul class="vertical menu">        
 				<li>
-					<a href="http://foundation.zurb.com/learn/about.html">Learn</a>
+					<a href="http://foundation.zurb.com/learn/about.html">Kínálatunk</a>
 					<ul class="submenu menu vertical image" data-submenu="">
-						<li><a href="http://foundation.zurb.com/learn/about.html"><img src="/assets/img/kanapki-76x76.png" /></a></li> 
-						<li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
-						<li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
-						<li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
-						<li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+						<?php 
+							//global $post;
+							$args = array(
+								'number'     => $number,
+								'orderby'    => $orderby,
+								'order'      => $order,
+								'hide_empty' => $hide_empty,
+								'include'    => $ids
+							);
+
+							$product_categories = get_terms( 'product_cat', $args );
+							foreach ($product_categories as $term) : ?>
+								<li>
+									<a href="<?php echo get_term_link( $term->term_id, 'product_cat' ); ?>">
+										<?php  
+										$thumbnail_id = get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true );
+										$image = wp_get_attachment_url( $thumbnail_id );
+										if ( $image ) {
+											echo '<img src="' . $image . '" alt="" />';
+										}
+										?>
+										<span class="category-name"><?php echo $term->name ?></span>
+									</a>
+								</li> 
+							<?php endforeach; ?>
 					</ul>
 				</li>
 				<li>

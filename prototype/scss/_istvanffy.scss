@@ -1,0 +1,51 @@
+.off-canvas-wrapper-inner .off-canvas{
+    height: 100%;
+    overflow-y: visible;
+    z-index: 11!important;
+    .logo{
+        background:#F8F7F5;
+        display:block;
+        padding:rem-calc(15);
+        text-align: center;
+    }
+}
+main{
+    padding:rem-calc(20);
+    
+    article{
+        background: $white;
+        padding:rem-calc(20);
+    }
+}
+.menu > {
+    li{
+        position: relative;
+        
+        > a{
+            background:lighten(map-get($istvanffy-palette, primary), 5%);
+            color:white;
+            padding:rem-calc(25 16);
+        }
+        ul{
+            @media #{$medium-up} {
+                display:none;                     
+                position:absolute;
+                left:100%;
+                top:0;
+                z-index: 1;
+                width:$offcanvas-size;
+                &.image{
+                    width:rem-calc(100);
+                }
+            } 
+            a{
+                background:lighten(map-get($istvanffy-palette, primary), 10%);
+            }
+        }
+        &:hover{
+            ul{
+                display:block;
+            }
+        }
+    }
+}
