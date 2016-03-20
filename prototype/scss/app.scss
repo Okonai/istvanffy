@@ -5,6 +5,7 @@
 @import 'motion-ui';
 
 @import 'istvanffy';
+@import 'frontpage';
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,latin-ext);
 
@@ -52,4 +53,3 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
-
