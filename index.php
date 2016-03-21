@@ -7,7 +7,7 @@
 				// WP_Query arguments
 				// WP_Query arguments
 				$args = array (
-					'cat'                    => '10',
+					'category_name'          => 'frontpage_panel',
 					'nopaging'               => false,
 					'posts_per_page'         => 8,
 					'order'                  => 'ASC',
@@ -26,7 +26,7 @@
 						<hr />
 					</span>
 
-					<span class="panel-text"><?php echo $panel->post_content ?></span>
+					<span class="panel-text"><?php echo wpautop($panel->post_content) ?></span>
 				</div>
 			<?php endforeach; ?>
 		</div>

@@ -39,7 +39,9 @@
 		}
 		&.wide{
 			background: $white;
-			&:after{
+            padding:0;
+            
+			&:before{
 				display: block;
 				content: "";
 				width: 80%;
